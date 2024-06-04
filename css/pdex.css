@@ -1,0 +1,444 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root{
+    --clr-dark: #2b2d42;
+    --clr-gray: #a9a0a0;
+    --clr-white: #dddddd;
+    --clr-fondo: #bdc2c6;
+
+    --type-normal: #c0d6e1;
+    --type-fire: #cf661b;
+    --type-water: #2169bc;
+    --type-electric: #ffc73b;
+    --type-grass: #a4d96c;
+    --type-ice: #8ecae6;
+    --type-fighting: #6a0e25;
+    --type-poison: #023047;
+    --type-ground: #615840;
+    --type-flying: #477d98;
+    --type-psychic: #b01983;
+    --type-bug: #045527;
+    --type-rock: #480432;
+    --type-ghost: #0a1c5e;
+    --type-dragon: #34a5dd;
+    --type-dark: #022434;
+    --type-steel: #0670a5;
+    --type-fairy: #b90629;
+}
+
+.img{
+    width: 200px;
+    margin-right: auto; /* Esto asegura que el logo este a la izquierda */
+    margin-left: auto;/* Esto asegura que el logo este a la derecha */
+    scale: 1.3;
+    transition: 1s ease-in-out;
+    cursor: pointer;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+}
+
+ul{
+    list-style-type: none;
+}
+
+button{
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+}
+
+body{
+    background-color: var(--clr-dark);
+    min-height: 100vh;
+}
+
+header{
+    background: black;
+    padding-block: 1rem;
+    box-shadow: 0 0 2rem 1rem rgba(245, 243, 243, 0.3);
+}
+
+nav{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+    padding-inline: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+
+.nav-list{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+.btn-header{
+    background-color: var(--clr-gray);
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 100vmax;
+    text-transform: uppercase;
+    font-weight: 600;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    transition: .2s ease-in-out;
+}
+/*Tamaño de la imagen*/
+.pokemon-imagen img{
+    width: 100%;
+    max-width: 8rem;
+    border-radius: 100vmax;
+    box-shadow: 0 0 1rem rgba(86, 2, 241, 0.5);
+    transition: 1.5s ease-in-out;
+}
+/*Aumento del tamanio de la imagen*/
+.pokemon-imagen:hover img{
+    transform: scale(1.1);
+    transition: .7s ease-in-out;
+}
+
+/*Tamaño del boton*/
+.btn-header:hover{
+    background-color: var(--clr-white);
+    color: var(--clr-dark);
+    cursor: pointer;
+}
+
+/*Main --> Es la parte de todas las tarjetas de los pokemones*/
+main{
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.todosPokemons{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem; /*Tamaño del color donde va el tipo*/
+}
+/*Para que se adapte cuando pasa a 600px y agregue otra columna*/
+@media screen and (min-width: 600px){
+    .todosPokemons{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 900px){
+    .todosPokemons{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+
+/*Estilo de la tarjeta de pokemones*/
+.pokemon{
+    border-radius: 15px;
+    background-color: #d0dbdb;
+    box-shadow: 0 0 3rem -1rem; 
+    padding: 1rem;
+    text-transform: uppercase;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.pokemon:hover{
+    box-shadow: 0 0 3rem rgba(0, 0, 0, 0.50);
+}
+
+.pokemon:hover .pokemon-id-back{
+    color: var(--type-fighting); /*Color del numero de fondo de la parte trasera*/
+    transition: 1s;
+}
+
+/*Estilo del numero de fondo*/
+.pokemon-id-back{
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    margin: auto;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--clr-fondo);
+    text-shadow: 0 0 1rem rgba(0, 0, 0, 0.50);
+    z-index: -1;
+}
+
+/*Imagen del pokemon*/
+.pokemon-imagen{
+    padding-inline: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.pokemon-info{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    align-items: center;
+    padding-inline: 1rem;
+    text-align: center;
+}
+
+.nombre-contenedor{
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pokemon-id{
+    background-color: var(--clr-gray);
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: .90rem;
+    font-weight: 600;
+}
+
+.pokemon-nombre{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.pokemon-tipos{
+    display: flex;
+    gap: .5rem;
+    font-size: .75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tipo{
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-weight: 600;
+    color: var(--clr-white);
+    text-shadow: 0 0 1rem rgba(0, 0, 0, 0.50);
+}
+
+.pokemon-stacks{
+    display: flex;
+    gap: 1rem;
+    font-size: .75rem;
+}
+
+.stack{
+    padding: .25rem .5rem;
+    background-color: rgb(198, 125, 186);
+    border-radius: 100vmax;
+    font-size: .85rem;
+}
+
+.btn-header:hover{
+    transform: scale(1.11);
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.50);
+}
+
+/*Tarjetas giratorias*/
+
+
+/*Asignacion de colores a todos lo botones*/
+.normal{
+    background-color: var(--type-normal);
+    color: var(--clr-black);
+}
+
+.fire{
+    background-color: var(--type-fire);
+    color: var(--clr-black);
+}
+
+.water{
+    background-color: var(--type-water);
+    color: var(--clr-white);
+}
+
+.electric{
+    background-color: var(--type-electric);
+    color: var(--clr-black);
+}
+
+.grass{
+    background-color: var(--type-grass);
+    color: var(--clr-black);
+}
+
+.ice{
+    background-color: var(--type-ice);
+    color: var(--clr-black);
+}
+
+.fighting{
+    background-color: var(--type-fighting);
+    color: var(--clr-white);
+}
+
+.poison{
+    background-color: var(--type-poison);
+    color: var(--clr-white);
+}
+
+.ground{
+    background-color: var(--type-ground);
+    color: var(--clr-white);
+}
+
+.flying{
+    background-color: var(--type-flying);
+    color: var(--clr-white);
+}
+
+.psychic{
+    background-color: var(--type-psychic);
+    color: var(--clr-white);
+}
+
+.bug{
+    background-color: var(--type-bug);
+    color: var(--clr-white);
+}
+
+.rock{
+    background-color: var(--type-rock);
+    color: var(--clr-white);
+}
+
+.ghost{
+    background-color: var(--type-ghost);
+    color: var(--clr-white);
+}
+
+.dragon{
+    background-color: var(--type-dragon);
+    color: var(--clr-black);
+}
+
+.dark{
+    background-color: var(--type-dark);
+    color: var(--clr-white);
+}
+
+.steel{
+    background-color: var(--type-steel);
+    color: var(--clr-white);
+}
+
+.fairy{
+    background-color: var(--type-fairy);
+    color: var(--clr-white);
+}
+/*Fin de la asignacion*/
+
+
+/*Estilo de las tarjetas*/
+
+.pokemon {
+    perspective: 1000px;
+    margin: 1rem;
+}
+
+.pokemon-inner {
+    position: relative;
+    width: auto;  /* Ajusta el ancho según tus necesidades */
+    height: 300px; /* Ajusta la altura según tus necesidades */
+    text-align: center;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.pokemon:hover .pokemon-inner,
+.pokemon.is-flipped .pokemon-inner {
+    transform: rotateY(180deg);
+}
+
+.pokemon-front, .pokemon-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.pokemon-front {
+    background-color: var(--clr-gray);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pokemon-back {
+    transform: rotateY(180deg);
+    background-color: var(--clr-gray);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+.pokemon-descripcion {
+    font-size: 1rem;
+    color: var(--clr-dark);
+    text-align: center;
+    padding: 1rem;
+    font-weight: 600;
+}
+
+/* Ocultar todo en el reverso excepto la imagen y la descripción */
+.pokemon-back .pokemon-id-back,
+.pokemon-back .pokemon-info,
+.pokemon-back .pokemon-tipos,
+.pokemon-back .pokemon-stacks {
+    display: inline-block;
+}
+
+.pokemon-back .pokemon-imagen {
+    display: block;
+}
+
+/* Tamaño del botón */
+.btn-header:hover {
+    background-color: var(--clr-gray);
+    color: var(--clr-dark);
+    cursor: pointer;
+}
+
+/* Main --> Es la parte de todas las tarjetas de los pokemones */
+main {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.todosPokemons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem; /* Tamaño del color donde va el tipo */
+}
+
+/* Para que se adapte cuando pasa a 600px y agregue otra columna */
+@media screen and (min-width: 600px) {
+    .todosPokemons {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .todosPokemons {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
