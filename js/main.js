@@ -3,7 +3,7 @@ const listaPokemon = document.querySelector("#listaPokemon");
 const botonesHeader = document.querySelectorAll(".btn-header");
 let URL = "https://pokeapi.co/api/v2/pokemon/";
 //Bucle para obtener todos los pokemones 
-for (let i = 1; i <= 151; i++) {
+for (let i = 1; i <= 1050; i++) {
     fetch(URL + i)
         .then((response) => response.json())
         .then(data => mostrarPokemon(data));
@@ -62,7 +62,7 @@ botonesHeader.forEach(boton => {
         listaPokemon.innerHTML = "";
 
         let promesas = [];
-        for (let i = 1; i <= 151; i++) {
+        for (let i = 1; i <= 1050; i++) {
             promesas.push(fetch(URL + i).then((response) => response.json()));
         }
 
