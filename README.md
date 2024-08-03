@@ -9,7 +9,7 @@ Este proyecto es una Pokédex interactiva desarrollada utilizando HTML, CSS y Ja
 ### Funcionalidades
 
 1. **Búsqueda de Pokémon:**
-   - Permite buscar Pokémon por nombre o ID.
+   - Permite buscar Pokémon tipo.
    - Muestra detalles como tipo, habilidades y estadísticas.
 
 2. **Diseño Interactivo:**
